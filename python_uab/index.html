@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=1024, user-scalable=no">
+
+    <title>Introduction to Python for geospatial uses</title>
+    
+    <!-- Required stylesheet -->
+    <link rel="stylesheet" href="../deckjs/core/deck.core.css">
+    
+    <!-- Extension CSS files go here. Remove or add as needed. -->
+    <link rel="stylesheet" href="../deckjs/extensions/goto/deck.goto.css">
+    <link rel="stylesheet" href="../deckjs/extensions/menu/deck.menu.css">
+    <link rel="stylesheet" href="../deckjs/extensions/navigation/deck.navigation.css">
+    <link rel="stylesheet" href="../deckjs/extensions/status/deck.status.css">
+    <link rel="stylesheet" href="../deckjs/extensions/hash/deck.hash.css">
+    <link rel="stylesheet" href="../deckjs/extensions/scale/deck.scale.css">
+
+    <!-- Style theme. More available in /themes/style/ or create your own. -->
+    <link rel="stylesheet" href="../deckjs/themes/style/web-2.0.css">
+    
+    <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+    <link rel="stylesheet" href="../deckjs/themes/transition/horizontal-slide.css">
+    
+    <!-- Required Modernizr file -->
+    <script src="../deckjs/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+<section class="slide" id="inicio">
+<h1>Python tools used in the SMC meteorological data processing</h1>
+</section>
+<section  class="slide" id="inici">
+    <h2>Python: What is it</h2>
+    <ul>
+        <li class="slide" id="lenguaje_interpretado">An interpreted language</li>
+        <li class="slide" id="tipos">Dynamic types / Strong types</li>
+        <li class="slide" id="objetos">Object oriented</li>
+        <li class="slide" id="multi">Multi-purpose</li>
+        <li class="slide" id="rápido">Thought to be fast (to <a href="http://shop.oreilly.com/product/9781593274078.do" target="_blank">learn</a>, to use, to understand)</li>
+        <li class="slide" id="limpio">Thought to create a clean an uniform code</li>
+    </ul>
+</section>
+<section class="slide" id="ventajas">
+    <h2>Python: Some advantages</h2>
+    <ul>
+        <li class="slide" id="simple_complejo">Allows to address simple problems in a simple way, but also complex problems
+            <ul>
+                <li>Script like coding</li>
+                <li>Object oriented programming with exceptions, etc</li>
+            </ul>
+        </li>
+        <li class="slide" id="batteries">Big standard library: "batteries included"</li>
+        <li class="slide" id="librerias">Lots of libraries and frameworks that extend it
+            <ul>
+                <li>Web creation</li>
+                <li>System administration</li>
+                <li>Scientific and geographic libraries</li>    
+                <li>Parallel programming</li>           
+            </ul>
+        </li>
+        <li class="slide" id="pega">Python <em>glues</em> libraries coded in different languages.</li>
+        <li class="slide" id="interactivo">Software that allows using it interactively: <em>ipython, SAGE</em></li>
+    </ul>
+</section>
+<section class="slide" id="python1">
+<h2>Python basic instructions</h2>
+<code><pre>a = 3
+b = 4
+a + b
+</pre></code>
+<div class="slide" id="python1_1">
+<h3>Conditions</h3>
+<code><pre>if b > a:
+    print "b is bigger than a"
+</pre></code>
+</div>
+<div class="slide" id="python1_2">
+<h3>Iterations</h3>
+<code><pre>for i in range(10):
+    print "Iteration number " + str(i)
+</pre></code>
+</div>
+</section>
+<section class="slide" id="numpy">
+    <h2>NumPy for matrix calculations</h2>
+    <p>Open the <em>ipython</em> console</p>
+    <code><pre>import numpy
+a = numpy.ones((20,10)) -> 20x10 array filled with 1
+a * 23 -> 20x10 array filled with 23
+a + 1 -> 20x10 array filled with 2
+a.sum() -> 200
+a[3:6,4:8] = 2 -> Fills the selected cells with 2
+a[[2,3],[4,4]] -> Returns the selected cells</pre></code>
+<p>Try</p>
+<ul><li>Other functions: <em>max()</em>, <em>mean()</em> (try to pass axis=1 as an argument), <em>reshape()</em>, <em>numpy.gradient(a)</em>, <em>numpy.arange()</em></li>
+<li>Other array indexation: <em>a[b]</em>, <em>a[b,c]</em></li>
+<li>Logical operations: <em>a>2</em></li>
+</ul>
+
+</section>
+<section class="slide" id="gdal">
+    <h2>GDAL/OGR</h2>
+    <em>Geospatial Data Abstraction Library</em>
+    <ul>
+        <li class="slide" id="que_es_GDAL">Abstract data model for reading raster and vectorial GIS formats</li>
+        <li class="slide" id="formatos_GDAL">More than 150 supported formats:
+            <ul>
+                <li>GeoTIFF</li>
+                <li>ENVI</li>
+                <li>Shapefile</li>
+                <li>PostGIS</li>
+                <li>GRIB</li>
+                <li>NetCDF</li>
+            </ul>
+        </li>
+        <li class="slide" id="GDAL_python">Used by many applications and written in C, has Python <em>bindings</em></li>
+        <li class="slide" id="GDAL_que_hace">Reading/Writting/Coordinate changes/GIS Operations</li>
+    </ul>
+</section>
+<section class="slide" id="gdal_iris">
+ <h2>VAISALA IRIS format</h2>
+ <ul>
+    <li>Proprietary format made by SIGMET/VAISALA for weather radars</li>
+    <li>Difficult to get the data</li>
+    <li>GDAL driver made by the SMC</li>
+
+ </ul>
+ <img src="img/gdal.png"/>
+</section>
+<section class="slide" id="basemap">
+ <h2>Basemap</h2>
+ <ul>
+    <li class="slide" id="basemap_matplotlib">Based on Matplotlib</li>
+    <li class="slide" id="basemap_ready_to_use">Ready to use</li>
+    <li class="slide" id="basemap_proj">Many projections</li>
+    <li class="slide" id="basemap_meteorology">Adapted to meteorology</li>
+    <li class="slide" id="basemap_gdal">Integrated with numpy (and GDAL)</li>
+    <li class="slide" id="basemap_tutorial">You can check the tutorial <a href="http://basemaptutorial.readthedocs.org/en/latest/">http://basemaptutorial.readthedocs.org/en/latest/</a></li>
+    <img src="img/read_wrf_barbs.png" class="slide" id="basemap_wrf"/>
+    
+ </ul>
+
+</section>
+<section class="slide" id="basemap_code">
+ <h2>Basemap code example</h2>
+    <img src="img/first_map.png"/>
+    <code><pre>from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+
+map = Basemap()
+ 
+map.drawcoastlines()
+ 
+plt.show()</pre></code>
+ </section>
+ <section class="slide" id="basemap_advanced">
+ <h2>Basemap examples</h2>
+    <img src="img/locator.png"/>
+    <img src="img/hexbin3.png"/>
+
+ </section>
+ <section class="slide" id="scipy">
+    <h2>Scipy</h2>
+    <ul>
+        <li class="slide" id="scipy-numpy">Extends NumPy</li>
+        <li class="slide" id="scipy-similar">Functions as in MATLAB, IDL, Octave, R-Lab and SciLab</li>
+        <li class="slide" id="scipy-alg">Algebraic functions</li>
+        <li class="slide" id="scipy-stats">Statistical functions</li>
+        <li class="slide" id="scipy-interp">Interpolation functions</li>
+        <li class="slide" id="scipy-cluster">Clustering functions</li>
+    </ul>
+    
+</section>
+<section  class="slide" id="scipy-example">
+    <h2>Scipy example</h2>
+    <img src="img/interpolate.png"/>
+    <code ><pre>from scipy.interpolate import interp1d
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 10)
+y = np.cos(-x**2/8.0)
+f = interp1d(x, y)
+f2 = interp1d(x, y, kind='cubic')
+
+xnew = np.linspace(0, 10, 40)
+
+plt.plot(x,y,'o',xnew,f(xnew),'-', xnew, f2(xnew),'--')
+plt.legend(['data', 'linear', 'cubic'], loc='best')
+plt.show()
+
+</pre></code>
+    </section>
+<section class="slide" id="scikit-learn">
+    <h2>Scikit-learn</h2>
+    <ul>
+        <li class="slide" id="scikit-learn-machine">Machine learning algorithms</li>
+        <li class="slide" id="scikit-learn-numpy">Integrated with NumPy</li>
+        <li class="slide" id="scikit-learn-classification">Classification</li>
+        <li class="slide" id="scikit-learn-regression">Regression</li>
+        <li class="slide" id="scikit-learn-clustering">Clustering</li>
+        <li class="slide" id="scikit-learn-normalization">Normalization</li>
+
+    </ul>
+</section>
+<section class="slide" id="temp">
+    <h2>Interpolating station data</h2>
+    <ul>
+        <li class="slide" id="temp-stations">SMC has about 160 automatic weather stations</li>
+        <li class="slide" id="temp-dependencies">Temperature depends on the altitude and the distance from the sea</li>
+        <li class="slide" id="temp-tools">Scikit-learn multilinear regression (or scipy)</li>
+        <li class="slide" id="temp-residues">Residues calculation</li>
+        <li class="slide" id="temp-result">Final result with NumPy</li>
+
+    </ul>
+
+</section>
+<section class="slide" id="temp_results">
+    <h2>Interpolating station data: results</h2>
+    
+    <img src="img/anomaliess.png"/>
+    <img src="img/interpolacio_temp.png"/>
+</section>
+<section class="slide" id="mos">
+    <h2>MOS</h2>
+    <li class="slide" id="mos-meaning">Model Output Statistics</li>
+    <li class="slide" id="mos-input">Input: WRF model output + station data (years)</li>
+    <li class="slide" id="mos-calculation">Scikit-learn multilinear regression / Scikit-learn classification</li>
+    <li class="slide" id="mos-output">Forecast at station locations (interpolable)</li>
+</section>
+<section class="slide" id="metro">
+    <h2>Viamet</h2>
+    <ul>
+    <li class="slide" id="metro-definition">Roadcasting</li>
+    <li class="slide" id="metro-model">METRo model</li>
+    <li class="slide" id="metro-virtual">Virtual points</li>
+    <li class="slide" id="metro-tm">Thermal mapping</li>
+    </ul>
+    <img src="img/mt1.png" class="slide" id="metro-tmimg"/>
+    <a href="http://slides.com/rammeteocat/viamet#/">More information</a>
+</section>
+
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+    <label for="goto-slide">Go to slide:</label>
+    <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+    <datalist id="goto-datalist"></datalist>
+    <input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="../deckjs/jquery-1.7.2.min.js"></script>
+<script src="../deckjs/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../deckjs/core/deck.core.js"></script>
+<script src="../deckjs/extensions/hash/deck.hash.js"></script>
+<script src="../deckjs/extensions/menu/deck.menu.js"></script>
+<script src="../deckjs/extensions/goto/deck.goto.js"></script>
+<script src="../deckjs/extensions/status/deck.status.js"></script>
+<script src="../deckjs/extensions/navigation/deck.navigation.js"></script>
+<script src="../deckjs/extensions/scale/deck.scale.js"></script>
+<!--
+<script src="../deckjs/extensions/markdown/Markdown.Converter.js"></script>
+<script src="../deckjs/extensions/markdown/deck.markdown.js"></script> -->
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+    $(function() {
+        $.deck('.slide');
+    });
+</script>
+</body>
+</html>
