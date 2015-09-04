@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=1024, user-scalable=no">
 
-    <title>Introduction to Python for geospatial uses</title>
+    <title>Viamet: Advanced integration of meteorological data to achieve high resolution winter road condition forecasts</title>
     
     <!-- Required stylesheet -->
     <link rel="stylesheet" href="../deckjs/core/deck.core.css">
@@ -33,13 +33,110 @@
 <section class="slide" id="inicio">
 <h2>Viamet: Advanced integration of meteorological data to achieve high resolution winter road condition forecasts</h2>
 <div><a href="https://twitter.com/rveciana">Roger Veciana i Rovira</a></div> 
-<div>Servei Meteorològic de Catalunya</div>
-    <div><a href="http://www.meteo.cat"><img src="img/logo.png" align="left"/></a></div>
+<h3 align="center">Servei Meteorològic de Catalunya</h3>
+    <div align="center"><a href="http://www.meteo.cat"><img src="img/logo.png"/></a></div>
 </section>
 
-<section class="slide" id="initial_problem">
+<section class="slide" id="initial_challenge">
+    <h2>The challenge</h2>
+    <div>Road status forecasting along 500km of mountain roads</div>
+    <img src="img/region.png"/>
+</section>
+<section class="slide" id="bergueda">
+    <h2>The region: El Berguedà</h2>
+
+        <h3>Highlands and flat zones</h3>
+        <img src="img/pedraforca.jpg"/>
+        
+    
+</section>
+<section class="slide" id="bergueda2">
+    <h2>The region: El Berguedà</h2>
+
+    <h3>Reservoires generating high moisture points (icy roads)</h3>
+    <img src="img/la_baells.jpg"/>
+        
+ </section>   
+ <section class="slide" id="bergueda3">
+    <h2>The region: El Berguedà</h2>
+<ul>
+    <li>Frequent thermal inversions</li>
+        <li>High variety of roads
+            <ul>
+            <li>Trunk roads at the main valley</li>
+            <li>Small roads connecting mountain towns</li>
+            </ul>
+        </li>
+
+    </ul>
+        <img src="img/variety.jpg"/>
+</section>       
+
+<section class="slide" id="usual_solution">
+    <h2>Usual solution</h2>
+    <h3>METRo model</h3>
+    <img src="img/metro.png"/>
+    <ul>
+        <li>Energy balance</li>
+        <li>Road conductivity</li>
+        <li>Presence of precipitation</li>
+    </ul>
+</section>  
+<section class="slide" id="metro_model_schema">
+    <h2>METRo model inputs</h2>
+    <img src="img/metro_data.png"/>
+    <h3>As many RWIS stations as points to forecast</h3>
+    <h3>Complex terrain means lots of points</h3>
+
+</section>  
+<section class="slide" id="problem">
+    <h1>Budget problem</h1>
+</section>
+<section class="slide" id="solution">
+    <h2>Our solution: 4 RWIS + "Virtual stations"</h2>
+    <h3>Calculating the RWIS variables from available data</h3>
+    <ul>
+                    
+        <li>Air temperature and dew point: Station data interpolation with residues</li>
+        <li>Presence of precipitation using the weather radar data</li>
+        <li>Wind taken from the CALMET downscaling model</li>
+        <li>Road temperature and condition from the actual RWIS + thermal mapping</li> 
+    </ul>
+    <h3>Enough data to calculate as many points as necessary</h3>
+</section>
+<section class="slide" id="thermal_mapping_instruments">
+    <h2>Thermal mapping equipment</h2>
+    <img src="img/thermal_mapping_instruments.png"/>
+</section>
+<section class="slide" id="thermal_mapping_creation">
+    <h2>Thermal mapping creation</h2>
+    <img src="img/thermal_map.png"/>
+    <div>Based on the Pasquill-Guifford index</div>
+</section>
+<section class="slide" id="thermal_mapping_creation">
+    <h2>Changes depending on the situation</h2>
+    <img src="img/damped_extreme.jpg"/>
+    
+</section>
+ 
+<section class="slide" id="technologies_used">
+    <h2>Technologies used</h2>
+    <ul>
+        <li>Generating the data: Python</li>
+        <li>Database: PostgreSQL with PostGIS</li>
+        <li>Web server: NodeJS</li>
+        <li>Web page: AngularJS</li>
+        <li>Mapping: OpenLayers 3</li>
+    </ul>
+</section>
+<section class="slide" id="demo">
+
+    <h1>
+        <a href="http://suport.meteo.cat/viamet" target="_blank">The actual page</a>
+    </h1>
 
 </section>
+
 
 <!-- End slides. -->
 
