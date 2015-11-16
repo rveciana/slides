@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=1024, user-scalable=no">
+
+    <title>Model postprocessing at the SMC</title>
+    
+    <!-- Required stylesheet -->
+    <link rel="stylesheet" href="../deckjs/core/deck.core.css">
+    
+    <!-- Extension CSS files go here. Remove or add as needed. -->
+    <link rel="stylesheet" href="../deckjs/extensions/goto/deck.goto.css">
+    <link rel="stylesheet" href="../deckjs/extensions/menu/deck.menu.css">
+    <link rel="stylesheet" href="../deckjs/extensions/navigation/deck.navigation.css">
+    <link rel="stylesheet" href="../deckjs/extensions/status/deck.status.css">
+    <link rel="stylesheet" href="../deckjs/extensions/hash/deck.hash.css">
+    <link rel="stylesheet" href="../deckjs/extensions/scale/deck.scale.css">
+
+    <!-- Style theme. More available in /themes/style/ or create your own. -->
+    <link rel="stylesheet" href="../deckjs/themes/style/web-2.0.css">
+    
+    <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+    <link rel="stylesheet" href="../deckjs/themes/transition/horizontal-slide.css">
+    
+    <!-- Required Modernizr file -->
+    <script src="../deckjs/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+<section class="slide" id="inicio">
+<h1>Model postprocessing at the SMC</h1>
+</section>
+<section class="slide" id="me">
+<h2>Roger Veciana i Rovira</h2>
+<div><a href="https://twitter.com/rveciana">@rveciana</a></div> 
+    <div><a href="http://geoexamples.blogspot.com">GeoExamples</a></div>    
+    <div><a href="http://www.meteo.cat"><img src="img/logo.png" align="left"/></a></div>
+</section>
+<section  class="slide" id="inici">
+    <h2>Python: What is it</h2>
+    <ul>
+        <li class="slide" id="lenguaje_interpretado">An interpreted language</li>
+        <li class="slide" id="tipos">Dynamic types / Strong types</li>
+        <li class="slide" id="objetos">Object oriented</li>
+        <li class="slide" id="multi">Multi-purpose</li>
+        <li class="slide" id="rápido">Thought to be fast (to <a href="http://shop.oreilly.com/product/9781593274078.do" target="_blank">learn</a>, to use, to understand)</li>
+        <li class="slide" id="limpio">Thought to create a clean an uniform code</li>
+    </ul>
+</section>
+<section class="slide" id="ventajas">
+    <h2>Python: Some advantages</h2>
+    <ul>
+        <li class="slide" id="simple_complejo">Allows to address simple problems in a simple way, but also complex problems
+            <ul>
+                <li>Script like coding</li>
+                <li>Object oriented programming with exceptions, etc</li>
+            </ul>
+        </li>
+        <li class="slide" id="batteries">Big standard library: "batteries included"</li>
+        <li class="slide" id="librerias">Lots of libraries and frameworks that extend it
+            <ul>
+                <li>Web creation</li>
+                <li>System administration</li>
+                <li>Scientific and geographic libraries</li>    
+                <li>Parallel programming</li>           
+            </ul>
+        </li>
+        <li class="slide" id="pega">Python <em>glues</em> libraries coded in different languages.</li>
+        <li class="slide" id="interactivo">Software that allows using it interactively: <em>ipython, SAGE</em></li>
+    </ul>
+</section>
+
+<section class="slide" id="python_libraries">
+    <h2>Some of the used python libraries</h2>
+    <ul>
+        <li class="slide" id="python_libraries1">NumPy for matrix calculations</li>
+        <li class="slide" id="python_libraries2">Scipy extends NumPy and functions as in MATLAB, IDL, Octave, R-Lab and SciLab</li>
+        <li class="slide" id="python_libraries3">Scikit-learn: machine learning</li>
+        <li class="slide" id="python_libraries4">Matplotlib for graphic drawing</li>
+        <li class="slide" id="python_libraries5">Basemap extends Matlpotlib to draw maps</li>
+        <li class="slide" id="python_libraries6">GDAL/OGR Geospatial Data Abstraction Library</li>
+    </ul>
+    <img src="img/read_wrf_barbs.png" class="slide" id="basemap_wrf"/>
+</section>
+<section class="slide" id="temp">
+    <h2>Interpolating station data</h2>
+    <ul>
+        <li class="slide" id="temp-stations">SMC has about 160 automatic weather stations</li>
+        <li class="slide" id="temp-dependencies">Temperature depends on the altitude and the distance from the sea<br/><img src="img/formula_regression.png" align="left"/><br/></li>
+        <li class="slide" id="temp-tools">Scikit-learn multilinear regression (or scipy)</li>
+        <li class="slide" id="temp-residues">Residues calculation<br/><img src="img/formula_residues.png" align="left"/><br/></li>
+        <li class="slide" id="residues-interp">Residues field by inverse of the distance</li>
+        <li class="slide" id="temp-result">Final result by adding the interpolated values and the residues field</li>
+        
+
+    </ul>
+
+</section>
+<section class="slide" id="temp_results">
+    <h2>Interpolating station data: results</h2>
+    
+    <img src="img/anomaliess.png"/>
+    <img src="img/interpolacio_temp.png"/>
+</section>
+
+<section class="slide" id="mos">
+    <h2>MOS</h2>
+    <li class="slide" id="mos-meaning">Model Output Statistics</li>
+    <li class="slide" id="mos-input">Input: WRF model output + station data (years)</li>
+    <li class="slide" id="mos-formula">A formula for each station:<br/><img src="img/formula_mos.png" align="left"/><br/></li>
+    <li class="slide" id="mos-season">Better performance with weather classification
+        <ul><li>Balance between historical data and groups</li></ul></li>
+    <li class="slide" id="mos-output">Forecast at station locations (interpolable)</li>
+    <li class="slide" id="mos-non-linear">Some cases are not linear i.e. precipitation</li>
+    <li class="slide" id="mos-calculation">Scikit-learn multilinear regression / Scikit-learn classification<br/><img width="50%" src="img/sklearn.png" align="left"/><br/></li>
+</section>
+
+
+<section class="slide" id="viamet1">
+<h2>Viamet: Advanced integration of meteorological data to achieve high resolution winter road condition forecasts</h2>
+<div>Road status forecasting along 500km of mountain roads</div>
+    <ul>
+        <li>Better Snowplow routes & efficiency</li>
+        <li>Reduction in the use of salt</li>
+        <li>Road security improvement</li>
+        <li>Objective justification for the taken actions</li>
+    </ul>
+</section>
+<section class="slide" id="bergueda3">
+    <h2>The region: El Berguedà</h2>
+<ul>
+    <li>Frequent thermal inversions</li>
+    <li>Reservoirs giving humidity</li>
+        <li>High variety of roads
+            <ul>
+            <li>Trunk roads at the main valley</li>
+            <li>Small roads connecting mountain towns</li>
+             <li>Two road operators</li>
+            </ul>
+        </li>
+
+    </ul>
+        <img src="img/variety.jpg"/>
+</section>       
+<section class="slide" id="usual_solution">
+    <h2>Usual solution</h2>
+    <h3>METRo model</h3>
+    <img src="img/metro.png"/>
+    <ul>
+        <li>Energy balance</li>
+        <li>Road conductivity</li>
+        <li>Presence of precipitation</li>
+    </ul>
+</section>  
+<section class="slide" id="metro_model_schema">
+    <h2>METRo model inputs</h2>
+    <img src="img/metro_data.png"/>
+    <h3>As many RWIS stations as points to forecast</h3>
+    <h3>Complex terrain means lots of points</h3>
+
+</section>  
+<section class="slide" id="metro_model_schema2">
+<h2>Data assimilation</h2>
+<img src="img/esquema_metro.png"/>
+</section>
+<section class="slide" id="problem">
+    <h1>Budget problem</h1>
+</section>
+<section class="slide" id="solution">
+    <h2>Our solution: 4 RWIS + "Virtual stations"</h2>
+    <h3>Calculating the RWIS variables from available data</h3>
+    <ul>
+                    
+        <li>Air temperature and dew point: Station data interpolation with residues</li>
+        <li>Presence of precipitation using the weather radar data</li>
+        <li>Wind taken from the CALMET downscaling model</li>
+        <li>Radiation calculated from the model corrected depending on the surrounding obstacles</li>
+        <li>Road temperature and condition from the actual RWIS + thermal mapping</li> 
+    </ul>
+    <h3>Enough data to calculate as many points as necessary</h3>
+</section>
+<section class="slide" id="thermal_mapping_instruments">
+    <h2>Thermal mapping equipment</h2>
+    <img src="img/thermal_mapping_instruments.png"/>
+</section>
+<section class="slide" id="thermal_mapping_creation">
+    <h2>Thermal mapping creation</h2>
+    <img src="img/thermal_map.png"/>
+    <div>Based on the Pasquill-Guifford index</div>
+</section>
+<section class="slide" id="thermal_mapping_creation">
+    <h2>Changes depending on the situation</h2>
+    <img src="img/damped_extreme.jpg"/>
+    <div>
+        <a href="http://suport.meteo.cat/viamet" target="_blank">The actual page</a>
+    </div>
+</section>
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+    <label for="goto-slide">Go to slide:</label>
+    <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+    <datalist id="goto-datalist"></datalist>
+    <input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="../deckjs/jquery-1.7.2.min.js"></script>
+<script src="../deckjs/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../deckjs/core/deck.core.js"></script>
+<script src="../deckjs/extensions/hash/deck.hash.js"></script>
+<script src="../deckjs/extensions/menu/deck.menu.js"></script>
+<script src="../deckjs/extensions/goto/deck.goto.js"></script>
+<script src="../deckjs/extensions/status/deck.status.js"></script>
+<script src="../deckjs/extensions/navigation/deck.navigation.js"></script>
+<script src="../deckjs/extensions/scale/deck.scale.js"></script>
+<!--
+<script src="../deckjs/extensions/markdown/Markdown.Converter.js"></script>
+<script src="../deckjs/extensions/markdown/deck.markdown.js"></script> -->
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+    $(function() {
+        $.deck('.slide');
+    });
+</script>
+</body>
+</html>
