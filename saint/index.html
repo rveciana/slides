@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>QGIS</title>
+
+		<link rel="stylesheet" href="slides/css/reveal.css">
+		<link rel="stylesheet" href="slides/css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="slides/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'slides/css/print/pdf.css' : 'slides/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section id="title"><h2>QGIS tutorial</h2>
+					<p>Roger Veciana i Rovira</p>
+					<img src="slides/images/smc.png" width="200px">
+				</section>
+				<section id="gis"><h2>GIS</h2>
+					<ul>
+						<li>Digital Data</li>
+						<li>Computer Hardware</li>
+						<li>Computer Software</li>
+					</ul>
+				</section>
+				
+				<section id="layers">
+					<h2>Data layers</h2>
+					<img src="slides/images/layers.jpg" width="400px">
+				</section>
+				<section>
+					<section id="data_types">
+						<h2>Data types</h2>
+						<ul>
+							<li>Vector data</li>
+							<li>Raster data</li>
+						</ul>
+					</section>
+					<section id="data_types_vector">
+							<h2>Vector data</h2>
+							<img src="slides/images/vector_types.svg" width="400px">
+					</section>
+					<section id="data_types_vattributes">
+							<h2>Attributes</h2>
+							<img src="slides/images/switzerland.svg" width="400px">
+							
+					</section>
+					<section id="data_types_multi_geometry">
+							<h2>Multi geometry</h2>
+							<img src="slides/images/philippines.svg" width="400px">
+							
+					</section>
+					<section id="data_types_raster">
+							<h2>Raster data</h2>
+							<img src="slides/images/raster.png" width="400px">
+					</section>
+					<section id="data_types_raster_layers">
+							<h2>Raster layers</h2>
+							<img src="slides/images/raster_layers.png" width="400px"><br/>
+							<p>1 position = 5 values</p>
+					</section>
+				</section>
+				<section>
+					<section id="qgis">
+						<img src="slides/images/qgis_logo.svg" width="300px"><br/>
+						<ul>
+							<li>Open Source</li>
+							<li>Widely used</li>
+							<li>Lots of integrated features</li>
+							<li>Plugins</li>
+						</ul>
+					</section>
+					<section id="qgis_sources">
+							<h2>Opening data sources</h2>
+							<ul>
+								<li>Files (GDAL)</li>
+								<li>Databases (i.e. postgis)</li>
+								<li>Web services (WMS, WFS, etc)</li>
+								<li>GeoPackage</li>
+							</ul>
+					</section>
+					<section id="qgis_represent_info">
+							<h2>Represent and get values</h2>
+							<ul>
+								<li>Color scale</li>
+								<li>Icons/fill for vectorial layers</li>
+								<li>Save styles</li>
+								<li>Information by point / feature</li>
+							</ul>
+					</section>
+					<section id="qgis_calc">
+							<h2>Calculations</h2>
+							<ul>
+								<li>Raster algorithms
+									<ul>
+										<li>Statistics</li>
+										<li>DEM functions</li>
+										<li>Custom functions</li>
+									</ul>
+								</li>
+								<li>Vector algorithms
+									<ul>
+										<li>Centroid</li>
+										<li>Topology (simplify, dissolve, difference,etc)</li>
+										<li>Vertices, Voronoi, etc</li>
+										<li>Data edition</li>
+									</ul>
+								</li>
+								<li>Plugins</li>
+								<li>Python</li>
+							</ul>
+					</section>
+					<section id="qgis_proj">
+							<h2>Projections</h2>
+							<ul>
+								<li>On the fly layer reprojection</li>
+								<li>Layer reprojection tools</li>
+								<li>Format transform</li>
+								<li>Both vectorial and raster data</li>
+							</ul>
+					</section>
+					<section id="qgis_proj2">
+							<h2>Projections: Example</h2>
+							<img src="slides/images/radar.png" width="300px">
+							<img src="slides/images/radar_wms.png" width="300px">
+							<img src="slides/images/radar_wms_xdde.png" width="300px">
+					</section>
+					<section id="qgis_edit">
+							<h2>Map edition mode</h2>
+							<ul>
+								<li>Titles, scales, legends, arrows...</li>
+								<li>Different export options</li>
+								<li>Template saving</li>
+							</ul>
+							<p><img src="slides/images/print.png" width="300px"></p>
+					</section>
+				</section>
+				<section id="practical_exercises">
+					<h2>Practical Exercices 1: Viewing files</h2>
+					<ul>
+						<li>Raster files
+							<ul>
+								<li>
+									<i>K1710190000v2</i>
+								</li>
+								<li>Set color scale</li>
+							</ul>
+						</li>
+						<li>Vector files
+							<ul>
+								<li><i>Comarques</i></li>
+								<li>Set style</li>
+								<li>>dissolve</li>
+		
+							</ul> 
+						</li>
+					</ul>
+				</section>
+				<section id="practical_exercises2">
+						<h2>Practical Exercices 2: Vector files</h2>
+						<ul>
+							<li>Filter</li>
+							<li>Colors</li>	
+							<li>Heatmap</li>
+							<li>Raster grid -> count</li>
+							<li>Rasterize</li>
+							<li>Cluster</li>
+
+						</ul>
+				</section>
+				<section id="practical_exercises3">
+						<h2>Practical Exercices 3: Raster files</h2>
+						<ul>
+							<li>Raster calculation</li>
+						</ul>
+				</section>
+				<section id="practical_exercises4">
+						<h2>Practical Exercices 4: Map creation</h2>
+				</section>
+				<section id="practical_exercises5">
+					<h2>Still have time?</h2>
+					<ul>
+						<li>track data --> processing --> points to path</li>
+						<li>Import csv
+							<ul>
+								<li>LMA data --> Regexp [ \t]+</li>
+							</ul>
+						</li>
+					</ul>
+			</section>
+			</div>
+		</div>
+
+		<script src="slides/lib/js/head.min.js"></script>
+		<script src="slides/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				
+				parallaxBackgroundImage: 'slides/images/background.jpg',
+				parallaxBackgroundSize: '2000px 1270px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+				parallaxBackgroundHorizontal: 20,
+				parallaxBackgroundVertical: 20,
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide',
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+				dependencies: [
+					{ src: 'slides/plugin/math/math.js', async: true },
+					{ src: 'slides/plugin/markdown/marked.js' },
+					{ src: 'slides/plugin/markdown/markdown.js' },
+					{ src: 'slides/plugin/notes/notes.js', async: true },
+					{ src: 'slides/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
