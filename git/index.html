@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>GIT</title>
+
+		<link rel="stylesheet" href="slides/css/reveal.css">
+		<link rel="stylesheet" href="slides/css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="slides/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'slides/css/print/pdf.css' : 'slides/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section id="title"><h2>GIT</h2>
+					
+					<img src="slides/images/smc.png" width="200px">
+				</section>
+
+				<section id="nom"><h2>Nom</h2>
+					<blockquote>
+						&ldquo;I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'&rdquo;
+					</blockquote>
+					<p>Linus Trovalds</p>
+					<blockquote>
+						&ldquo;Git: 'unpleasant person' in British English slang&rdquo;
+					</blockquote>
+				</section>
+				
+				<section id="control"><h2>Control de versions distribuït</h2>
+					<img src="slides/images/control.png" width="600px">
+				</section>
+
+				<section id="local"><h2>Local/Remot</h2>
+					<img src="slides/images/localremote.png" width="600px">
+				</section>
+
+				<section id="integracio"><h2>Integració IDE</h2>
+					<img src="slides/images/code_integration2.png">
+				</section>
+
+				<section id="integracio2"><h2>Integració IDE</h2>
+					<img src="slides/images/code_integration.png">
+				</section>
+
+				<section id="integracio2"><h2>.gitignore</h2>
+				</section>
+				
+			</div>
+		</div>
+
+		<script src="slides/lib/js/head.min.js"></script>
+		<script src="slides/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				
+				parallaxBackgroundImage: 'slides/images/background.jpg',
+				parallaxBackgroundSize: '1920px 1200px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+				parallaxBackgroundHorizontal: 20,
+				parallaxBackgroundVertical: 20,
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide',
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+				dependencies: [
+					{ src: 'slides/plugin/math/math.js', async: true },
+					{ src: 'slides/plugin/markdown/marked.js' },
+					{ src: 'slides/plugin/markdown/markdown.js' },
+					{ src: 'slides/plugin/notes/notes.js', async: true },
+					{ src: 'slides/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
