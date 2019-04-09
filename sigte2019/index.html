@@ -30,13 +30,36 @@
 					<p>Roger Veciana i Rovira</p>
 				</section>
 				<section id="tiff"><h2>Formato TIFF</h2>
-					
-			
+					<ul>
+						<li>Tagged Image File Format. V6.0 1992</li>
+						<li>Tipos de datos</li>
+						<li>Compresión de distintos tipos</li>
+						<li><i>Campos privados</i></li>
+						<li>Sub-ficheros (IFD)</li>
+						<li>Teselas</li>
+						
+					</ul>
 				</section>
 				<section id="geotiff"><h2>Campos privados</h2>
-					
-			
+					<p>GeoTIFF</p>
+					<ul>
+						<li>Proyección</li>
+						<li>Datum</li>
+						<li>Sistema de coordenadas</li>
+						<li>Elipsoide</li>
+					</ul>
 				</section>
+				<section id="overviews"><h2>Sub-ficheros</h2>
+					<img src="./images/pyramids.png">
+				</section>
+				<section id="overviews"><h2>Teselas</h2>
+					<img src="./images/pyramids.png" width="300px">
+					<ul>
+						<li>No hay tamaño estándard (256 o 512)</li>
+						<li>Compresión a nivel de tesela</li>
+					</ul>
+				</section>
+
 				<section id="get_range"><h2>HTTP GET Range</h2>
 					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
 					GET /dem.tiff 
@@ -46,10 +69,61 @@
 					content-range: bytes 16056075-16711425/26705623
 					</code></pre>
 				</section>
+				<section id="formato_cog"><h2>El formato COG</h2>
+					<ol>
+						<li>TIFF / BigTIFF signature</li>
+						<li>IFD (Image File Directory máxima resolución</li>
+						<li>Valores de tags fuera de IFD, como los de GeoTIFF</li>
+						<li>Opcional: IFD 1r overview</li>
+						<li>...</li>
+						<li>Datos primer overview</li>
+						<li>...</li>
+						<li>Datos máxima resolución</li>
+					</ol>
+				</section>
+				<section id="ventajas"><h2>Ventajas</h2>
+					<ul>
+						<li>Evita crear teselas</li>
+						<li>Se pueden consultar valores desde un servidor simple</li>
+						<li>Serverless S3, etc.</li>
+					</ul>
+				</section>
+				<section id="creacion"><h2>Creación de un COG</h2>
+					<pre>
+						<code>gdal_translate ori.tiff out.tiff -co COMPRESS=LZW -co TILED=YES</code>
+					</pre>
+					<pre>
+						<code>gdaladdo -r average out.tif 2 4 8 16</code>
+					</pre>
 
+					<pre>
+						<code>python3 validate_cloud_optimized_geotiff.py out.tiff</code>
+					</pre>
+				</section>
+				<section id="lectura_gdal"><h2>Leyendo con GDAL</h2>
+					<pre>
+						<code>gdallocationinfo --debug on /vsicurl/http://dominio.com/archivo.tiff  5000 5000</code>
+					</pre>
+					<pre>
+						<code>gdal_translate /vsicurl/http://dominio.com/archivo.tiff \
+-srcwin 1024 1024 256 256 out.tif
+							</code>
+					</pre>
+				</section>
 				<section id="QGIS"><h2>QGIS</h2>
 					<img src="./images/qgis.gif">
-			
+				</section>
+				<section id="geotiffjs"><h2>GeoTIFF.js</h2>
+					<p><a href="https://observablehq.com/@rveciana/cloud-optimized-geotiffs">Ejemplo</a></p>
+				</section>
+				<section id="terracotta"><h2>Otras aplicaciones</h2>
+					<p>Terracotta</p>
+					<img src="./images/terracotta.svg">
+					<ul>
+						<li>Sirve teselas creadas dinámicamente desde el programa</li>
+						<li>Serverless</li>
+					</ul>
+
 				</section>
 
 			</div>
