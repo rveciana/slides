@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Cloud Optimized GeoTIFF</title>
+
+		<link rel="stylesheet" href="../git/slides/css/reveal.css">
+		<link rel="stylesheet" href="../git/slides/css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../git/slides/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../git/slides/css/print/pdf.css' : '../git/slides/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section id="title"><h2>Cloud Optimized GeoTIFF</h2>
+					
+					<img src="./images/smc.png" width="200px">
+					<p>Roger Veciana i Rovira</p>
+				</section>
+				<section id="tiff"><h2>Formato TIFF</h2>
+					
+			
+				</section>
+				<section id="geotiff"><h2>Campos privados</h2>
+					
+			
+				</section>
+				<section id="get_range"><h2>HTTP GET Range</h2>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+					GET /dem.tiff 
+					Range: bytes=16056075-16711425
+					</code></pre>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+					content-range: bytes 16056075-16711425/26705623
+					</code></pre>
+				</section>
+
+				<section id="QGIS"><h2>QGIS</h2>
+					<img src="./images/qgis.gif">
+			
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../git/slides/lib/js/head.min.js"></script>
+		<script src="../git/slides/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				
+				parallaxBackgroundImage: './images/background.jpg',
+				parallaxBackgroundSize: '1920px 1200px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+				parallaxBackgroundHorizontal: 20,
+				parallaxBackgroundVertical: 20,
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide',
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+				dependencies: [
+					{ src: '../git/slides/plugin/math/math.js', async: true },
+					{ src: '../git/slides/plugin/markdown/marked.js' },
+					{ src: '../git/slides/plugin/markdown/markdown.js' },
+					{ src: '../git/slides/plugin/notes/notes.js', async: true },
+					{ src: '../git/slides/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
