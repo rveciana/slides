@@ -72,7 +72,7 @@
 				<section id="formato_cog"><h2>El formato COG</h2>
 					<ol>
 						<li>TIFF / BigTIFF signature</li>
-						<li>IFD (Image File Directory máxima resolución</li>
+						<li>IFD (Image File Directory máxima resolución)</li>
 						<li>Valores de tags fuera de IFD, como los de GeoTIFF</li>
 						<li>Opcional: IFD 1r overview</li>
 						<li>...</li>
@@ -102,7 +102,8 @@
 				</section>
 				<section id="lectura_gdal"><h2>Leyendo con GDAL</h2>
 					<pre>
-						<code>gdallocationinfo --debug on /vsicurl/http://dominio.com/archivo.tiff  5000 5000</code>
+						<code>gdallocationinfo --debug on  \
+/vsicurl/http://dominio.com/archivo.tiff 5000 5000</code>
 					</pre>
 					<pre>
 						<code>gdal_translate /vsicurl/http://dominio.com/archivo.tiff \
@@ -128,6 +129,7 @@
 				<section id="aws"><h2>Otras aplicaciones</h2>
 					<p>Rasterio + AWS</p>
 					<img src="./images/aws.png" width="600px"/>
+					<p><a href="https://blog.addresscloud.com/serverless-flood/">Código</a></p>
 				</section>
 				<section id="alternativa"><h2>Alternativa: MRF</h2>
 					<p>Meta Raster Format</p>
